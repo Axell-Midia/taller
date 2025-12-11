@@ -19,7 +19,6 @@ public class InsumoController {
     @Autowired
     private InsumoService servicio;
 
-    // Rutas
 
     @GetMapping("/insumo/listar")
     public String MostrarListarColor(Model modelo) {

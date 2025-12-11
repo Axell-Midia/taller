@@ -22,7 +22,7 @@ public class ProveedorEntity implements Serializable {
 
     @Id
     @Column(name = "codpro")
-    private Long codigo;  // La columna 'codpro' es de tipo INT
+    private Long codigo;  
 
     @Column(name = "nompro", length = 100, nullable = false)
     private String nombre;
