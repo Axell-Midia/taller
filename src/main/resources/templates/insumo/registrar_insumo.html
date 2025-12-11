@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Taller | Registro insumo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Registro de Insumos</h1>
+        <!-- inicio del formulario -->
+        <form th:action="@{/insumo/registrar}" method="post" th:object="${insumo}">
+            <div class="col-6">
+                <label for="txtNom" class="form-label">Nombre:</label>
+                <input type="text" class="form-control" id="txtNom" name="txtNom" placeholder="Ingresa el nombre del color"
+                    required th:field="*{nombre}">
+            </div>
+			
+			<div class="col-6">
+			                <label for="txtMar" class="form-label">Marca:</label>
+			                <input type="text" class="form-control" id="txtMar" name="txtMar" placeholder="Ingresa la marca del insumo"
+			         required th:field="*{marca}">
+			         </div>
+						
+			<div class="col-6">
+				<label for="txtCos" class="form-label">Costo:</label>
+				<input type="text" class="form-control" id="txtCos" name="txtCos" placeholder="Ingresa el costo del insumo"
+				required th:field="*{costo}">
+			</div>
+            <div class="col-6">
+                <label for="chkEst" class="form-label">Estado:</label>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="chkEst" th:field="*{estado}">
+                    <label class="form-check-label" for="chkEst">Habilitado</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <button type="submit" class="btn btn-primary">Registrar</button>
+                <a th:href="@{/insumo/listar}" class="btn btn-dark">Regresar</a>
+            </div>
+        </form>
+        <!-- fin del formulario -->
+    </div>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
