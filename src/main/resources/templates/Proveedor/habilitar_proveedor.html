@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Taller | Habilitar Proveedor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container py-4">
+
+    <h1 class="mb-4">Habilitar Proveedor</h1>
+
+    <a class="btn btn-dark mb-3" th:href="@{/proveedor/listar}">Regresar</a>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Habilitar</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="prov : ${listadeshabilitados}">
+                <td th:text="${prov.codigo}"></td>
+                <td th:text="${prov.nombre}"></td>
+                <td th:text="${prov.telefono}"></td>
+                <td th:text="${prov.correo}"></td>
+
+                <td>
+                    <a th:href="@{/proveedor/habilitar/{id}(id=${prov.codigo})}"
+                       class="btn btn-success btn-sm">
+                        Habilitar
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+</body>
+</html>
