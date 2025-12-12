@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Taller | Habilitar Mecánico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container py-4">
+
+    <h1 class="mb-4">Habilitar Mecánico</h1>
+
+    <a class="btn btn-dark mb-3" th:href="@{/mecanico/listar}">Regresar</a>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Habilitar</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="mec : ${listamecanico}">
+                <td th:text="${mec.codigo}"></td>
+                <td th:text="${mec.nombre}"></td>
+                <td th:text="${mec.telefono}"></td>
+
+                <td>
+                    <a th:href="@{/mecanico/habilitar/{id}(id=${mec.codigo})}"
+                       class="btn btn-success btn-sm">
+                        Habilitar
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+</body>
+</html>
