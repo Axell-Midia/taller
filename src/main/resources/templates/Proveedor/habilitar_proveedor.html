@@ -28,18 +28,18 @@
             </thead>
 
             <tbody>
-            <tr th:each="prov : ${listadeshabilitados}">
+            <tr th:each="prov : ${listaproveedor}">
                 <td th:text="${prov.codigo}"></td>
                 <td th:text="${prov.nombre}"></td>
                 <td th:text="${prov.telefono}"></td>
                 <td th:text="${prov.correo}"></td>
 
-                <td>
-                    <a th:href="@{/proveedor/habilitar/{id}(id=${prov.codigo})}"
-                       class="btn btn-success btn-sm">
-                        Habilitar
-                    </a>
-                </td>
+				<td>
+				                   <a th:href="@{/proveedor/habilitar/{id}(id=${prov.codigo})}"
+				                      class="btn btn-success btn-sm">
+				                       Habilitar
+				                   </a>
+				               </td>
             </tr>
             </tbody>
 

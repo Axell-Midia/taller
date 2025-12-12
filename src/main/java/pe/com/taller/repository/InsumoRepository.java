@@ -6,7 +6,7 @@ import pe.com.taller.entity.InsumoEntity;
 
 import java.util.List;
 
-public interface InsumoRepository extends JpaRepository<InsumoEntity, Long> {  // Usamos Long como el tipo de clave primaria
+public interface InsumoRepository extends JpaRepository<InsumoEntity, Long> { 
 	@Query("SELECT i FROM InsumoEntity i WHERE i.estado = true")
 	List<InsumoEntity> findAllCustom();
 

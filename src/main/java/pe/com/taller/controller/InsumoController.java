@@ -68,13 +68,13 @@ public class InsumoController {
     }
 
     @PostMapping("/insumo/registrar")
-    public String RegistrarColor(@ModelAttribute("color") InsumoEntity obj) {
+    public String RegistrarInsumo(@ModelAttribute("insumo") InsumoEntity obj) {
         servicio.add(obj);
         return "redirect:/insumo/listar";
     }
 
     @PostMapping("/insumo/actualizar/{id}")
-    public String ActualizarColor(@ModelAttribute("color") InsumoEntity obj, @PathVariable Long id) {
+    public String ActualizarInsumo(@ModelAttribute("insumo") InsumoEntity obj, @PathVariable Long id) {
         servicio.update(obj, id);
         return "redirect:/insumo/listar";
     }
