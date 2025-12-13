@@ -39,7 +39,7 @@ public class InsumoEntity implements Serializable {
     @Column(name = "cosins", precision = 10, scale = 2)
     private BigDecimal costo;
 
-    @Column(name = "estins", length = 20, nullable = false)
+    @Column(name = "estins", nullable = false)
     private boolean estado;
 
     @ManyToOne

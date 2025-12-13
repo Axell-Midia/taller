@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Taller | Menú Principal</title>
+<link rel="stylesheet" href="/src/main/resources/static/style.css">  
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+</head>
+<style>
+	body {
+	           font-family: 'Poppins', sans-serif;
+	           background: #121212;
+	           color: #fff;
+	       }
+	       nav.navbar {
+	           background: linear-gradient(135deg, #6e7dff, #ff66b3);
+	           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	       }
+
+	       .navbar-brand {
+	           font-size: 2rem;
+	           font-weight: 600;
+	           color: #fff;
+	       }
+
+	       .navbar-nav .nav-link {
+	           font-size: 1.2rem;
+	           font-weight: 500;
+	           color: #fff;
+	           padding: 12px 20px;
+	           border-radius: 30px;
+	           margin-right: 10px;
+	           transition: background-color 0.3s ease;
+	       }
+
+	       .navbar-nav .nav-link:hover {
+	           background-color: rgba(255, 255, 255, 0.2);
+	       }
+
+	       .navbar-nav .dropdown-menu {
+	           background: #1e1e1e;
+	           border: none;
+	       }
+
+	       .dropdown-item {
+	           color: #fff;
+	           padding: 10px 20px;
+	           transition: all 0.3s ease;
+	       }
+
+	       .dropdown-item:hover {
+	           background-color: #ff66b3;
+	           color: #fff;
+	           cursor: pointer;
+	       }
+
+	       .container {
+	           padding: 40px 20px;
+	       }
+
+	       .btn-main {
+	           background: #ff66b3;
+	           border: none;
+	           color: white;
+	           font-weight: bold;
+	           padding: 12px 30px;
+	           border-radius: 30px;
+	           transition: background 0.3s ease;
+	       }
+
+	       .btn-main:hover {
+	           background: #ff3399;
+	       }
+
+	       .nav-item, .nav-link {
+	           opacity: 0;
+	           transform: translateY(30px);
+	           animation: fadeInUp 0.7s ease-in-out forwards;
+	       }
+
+	       .nav-item:nth-child(1) { animation-delay: 0.1s; }
+	       .nav-item:nth-child(2) { animation-delay: 0.2s; }
+	       .nav-item:nth-child(3) { animation-delay: 0.3s; }
+
+	       @keyframes fadeInUp {
+	           from {
+	               opacity: 0;
+	               transform: translateY(30px);
+	           }
+	           to {
+	               opacity: 1;
+	               transform: translateY(0);
+	           }
+	       }
+</style>
+<body>
+
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Taller de Mantenimiento</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Acerca de Nosotros</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Mantenimiento
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" th:href="@{/insumo/listar}">Insumo</a></li>
+                                <li><a class="dropdown-item" th:href="@{/proveedor/listar}">Proveedor</a></li>
+                                <li><a class="dropdown-item" th:href="@{/servicio/listar}">Servicio</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="text-center my-5">
+            <h1>Bienvenido al Taller de Mantenimiento</h1>
+            <p>Administra de manera eficiente los servicios, insumos y proveedores de tu taller.</p>
+            <a href="#" class="btn btn-main">Ver Servicios</a>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
