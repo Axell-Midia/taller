@@ -4,42 +4,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Taller | Registro insumo</title>
+    <title>Rapidos y Furiosos | Registro Marca</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
 <body>
     <div class="container">
-        <h1>Registro de Insumos</h1>
+        <h1>Registro de Marca</h1>
         <!-- inicio del formulario -->
-        <form th:action="@{/insumo/registrar}" method="post" th:object="${insumo}">
+        <form th:action="@{/marca/registrar}" method="post" th:object="${marca}">
             <div class="col-6">
                 <label for="txtNom" class="form-label">Nombre:</label>
-                <input type="text" class="form-control" id="txtNom" name="txtNom" placeholder="Ingresa el nombre del insumo"
+                <input type="text" class="form-control" id="txtNom" name="txtNom" placeholder="Ingresa el nombre"
                     required th:field="*{nombre}">
             </div>
-			
-			<div class="col-6">
-                <label for="txtMar" class="form-label">Marca:</label>
-				<select class="form-select" id="cboMar" name="cboMar" th:field="*{marca}" required>
-								    <option th:each="mar:${listamarca}" th:value="${mar.codigo}" th:text="${mar.nombre}"></option>
-								</select>
-            </div>
-			
-			<div class="col-6">
-				<label for="txtCos" class="form-label">Costo:</label>
-				<input type="number" class="form-control" id="txtCos" name="txtCos" placeholder="Ingresa el costo del insumo"
-				required step="any" th:field="*{costo}">
-			</div>
-			
-			<div class="col-6">
-				<label for="cboProv" class="form-label">Proveedor:</label>
-				<select class="form-select" id="cboProv" name="cboProv" th:field="*{proveedor}" required>
-				    <option th:each="pro:${listaproveedor}" th:value="${pro.codigo}" th:text="${pro.nombre}"></option>
-				</select>
-			</div>
-						
             <div class="col-6">
                 <label for="chkEst" class="form-label">Estado:</label>
                 <div class="mb-3 form-check">
@@ -47,10 +26,9 @@
                     <label class="form-check-label" for="chkEst">Habilitado</label>
                 </div>
             </div>
-            
             <div class="col-6">
-                <button type="submit" class="btn btn-primary">Registrar Insumo</button>
-                <a th:href="@{/insumo/listar}" class="btn btn-dark">Regresar</a>
+                <button type="submit" class="btn btn-primary">Registrar</button>
+                <a th:href="@{/marca/listar}" class="btn btn-dark">Regresar</a>
             </div>
         </form>
         <!-- fin del formulario -->

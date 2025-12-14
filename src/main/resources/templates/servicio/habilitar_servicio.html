@@ -28,7 +28,6 @@
 						<th scope="col">Tiempo</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Habilitar</th>
-                        <th scope="col">Deshabilitar-</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,7 +38,6 @@
 						<td th:text="${ser.tiempo}"></td>
                         <td th:text="${ser.estado} ? 'Habilitado': 'Deshabilitado'"></td>
                         <td><a th:href="@{/servicio/habilitar/{id}(id=${ser.codigo})}" class="btn btn-success">Seleccionar</a></td>
-                        <td><a th:href="@{/servicio/deshabilitar-/{id}(id=${ser.codigo})}" class="btn btn-danger">Seleccionar</a></td>
                     </tr>
                 </tbody>
             </table>

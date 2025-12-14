@@ -32,9 +32,10 @@ public class InsumoEntity implements Serializable {
     
     @Column(name = "nomins", length = 100, nullable = false)
     private String nombre;
-
-    @Column(name = "marins", length = 100)
-    private String marca;
+    
+    @ManyToOne
+    @JoinColumn(name = "codmar", referencedColumnName = "codmar")
+    private MarcaEntity marca;  
 
     @Column(name = "cosins", precision = 10, scale = 2)
     private BigDecimal costo;
@@ -45,8 +46,6 @@ public class InsumoEntity implements Serializable {
     @ManyToOne
     @JoinColumn(name = "codpro", referencedColumnName = "codpro")
     private ProveedorEntity proveedor;
-    
-    
     
     
 }

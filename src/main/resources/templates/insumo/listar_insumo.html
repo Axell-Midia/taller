@@ -25,25 +25,27 @@
                     <tr>
                         <th scope="col">Código</th>
                         <th scope="col">Nombre</th>
-						<th scope="col">Marca</th>
-						<th scope="col">Costo</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Costo</th>
+                        <th scope="col">Proveedor</th>
                         <th scope="col">Estado</th>
-                        <th scope="col">Actualizar</th>
-                        <th scope="col">Eliminar</th>
+                        <th scope="col" class="text-center">Actualizar</th>
+                        <th scope="col" class="text-center">Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="ins : ${listainsumo}">
                         <th scope="row" th:text="${ins.codigo}"></th>
                         <td th:text="${ins.nombre}"></td>
-						<td th:text="${ins.marca}"></td>
-						<td th:text="${ins.costo}"></td>
+                        <td th:text="${ins.marca.nombre}"></td>
+                        <td th:text="${ins.costo}"></td>
+                        <td th:text="${ins.proveedor.nombre}"></td>
                         <td th:text="${ins.estado} ? 'Habilitado' : 'Deshabilitado'"></td>
-                        <td>
-                            <a th:href="@{/insumo/actualizar/{id}(id=${ins.codigo})}" class="btn btn-success btn-sm">Seleccionar</a>
+                        <td class="text-center">
+                            <a th:href="@{/insumo/actualizar/{id}(id=${ins.codigo})}" class="btn btn-success btn-sm">Actualizar</a>
                         </td>
-                        <td>
-                            <a th:href="@{/insumo/eliminar/{id}(id=${ins.codigo})}" class="btn btn-danger btn-sm">Seleccionar</a>
+                        <td class="text-center">
+                            <a th:href="@{/insumo/eliminar/{id}(id=${ins.codigo})}" class="btn btn-danger btn-sm">Eliminar</a>
                         </td>
                     </tr>
                 </tbody>

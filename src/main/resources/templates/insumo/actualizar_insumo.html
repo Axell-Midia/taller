@@ -16,7 +16,7 @@
     <div class="container">
       <h1>Actualización de Insumo</h1>
       <!-- inicio del formulario -->
-      <form th:action="@{/insumo/actualizar/{id}(id=${color.codigo})}" method="post" th:object="${color}">
+      <form th:action="@{/insumo/actualizar/{id}(id=${insumo.codigo})}" method="post" th:object="${insumo}">
     <div class="col-6">
         <label for="txtCod" class="form-label">Codigo:</label>
         <input type="text" class="form-control" id="txtCod" name="txtCod" th:field="*{codigo}" readonly />
@@ -27,12 +27,19 @@
     </div>
 	<div class="col-6">
 	        <label for="txtMar" class="form-label">Marca:</label>
-	        <input type="text" class="form-control" id="txtMar" name="txtMar" placeholder="Ingresa la marca" th:field="*{marca}" />
-	    </div>
+			<select class="form-select" id="cboMar" name="cboMar" th:field="*{marca}" required>
+						        <option th:each="mar : ${listamarca}" th:value="${mar.codigo}" th:text="${mar.nombre}"></option>
+						    </select>	    </div>
 		<div class="col-6">
 		        <label for="txtCos" class="form-label">Costo:</label>
 		        <input type="text" class="form-control" id="txtCos" name="txtCos" placeholder="Ingresa el costo" th:field="*{costo}" />
 		    </div>
+			<div class="col-6">
+			    <label for="cboProv" class="form-label">Proveedor:</label>
+			    <select class="form-select" id="cboProv" name="cboProv" th:field="*{proveedor}" required>
+			        <option th:each="pro : ${listaproveedor}" th:value="${pro.codigo}" th:text="${pro.nombre}"></option>
+			    </select>
+			</div>
     <div class="col-6">
         <label for="chkEst" class="form-label">Estado:</label>
         <div class="mb-3 form-check">
