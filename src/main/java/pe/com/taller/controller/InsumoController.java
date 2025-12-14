@@ -1,8 +1,6 @@
 package pe.com.taller.controller;
 
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import pe.com.taller.entity.InsumoEntity;
-import pe.com.taller.entity.MarcaEntity;
-import pe.com.taller.entity.ProveedorEntity;
 import pe.com.taller.service.InsumoService;
 import pe.com.taller.service.MarcaService;
 import pe.com.taller.service.ProveedorService;
@@ -40,22 +36,29 @@ public class InsumoController {
 
     @GetMapping("/insumo/registro")
     public String MostrarRegistrarInsumo(Model modelo) {
-    	modelo.addAttribute("insumo", new InsumoEntity());
-    	modelo.addAttribute("listaproveedor", proveedorService.findAllCustom());
-    	modelo.addAttribute("listamarca", marcaService.findAllCustom());
+        modelo.addAttribute("insumo", new InsumoEntity());
+        modelo.addAttribute("listaproveedor", proveedorService.findAllCustom());
+        modelo.addAttribute(
+            "listamarca",
+            marcaService.findByTipoAndEstadoTrue("INSUMO")
+        );
         return "insumo/registrar_insumo";
     }
 
     @GetMapping("/insumo/actualizar/{id}")
     public String MostrarActualizarInsumo(Model modelo, @PathVariable Long id) {
         InsumoEntity insumo = servicio.findById(id);
-        List<ProveedorEntity> proveedores = proveedorService.findAll();
-        List<MarcaEntity> marcas = marcaService.findAll();
+
         modelo.addAttribute("insumo", insumo);
-        modelo.addAttribute("listaproveedor", proveedores);
-        modelo.addAttribute("listamarca", marcas);
+        modelo.addAttribute("listaproveedor", proveedorService.findAll());
+        modelo.addAttribute(
+            "listamarca",
+            marcaService.findByTipoAndEstadoTrue("INSUMO")
+        );
+
         return "insumo/actualizar_insumo";
     }
+
 
     @GetMapping("/insumo/habilitar")
     public String MostrarHabilitarInsumo(Model modelo) {

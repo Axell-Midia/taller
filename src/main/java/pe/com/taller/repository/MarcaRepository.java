@@ -7,10 +7,13 @@ import org.springframework.data.jpa.repository.Query;
 
 import pe.com.taller.entity.MarcaEntity;
 
+public interface MarcaRepository extends JpaRepository<MarcaEntity, Long> {
+	
 
-public interface MarcaRepository extends JpaRepository<MarcaEntity, Long> //
-{
-	@Query("SELECT s FROM MarcaEntity s WHERE s.estado= true")
-	List<MarcaEntity> findAllCustom();
+    @Query("SELECT m FROM MarcaEntity m WHERE m.estado = true")
+    List<MarcaEntity> findAllCustom();
 
+    List<MarcaEntity> findByEstadoTrue();
+    
+    List<MarcaEntity> findByTipoAndEstadoTrue(String tipo);
 }

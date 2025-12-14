@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Taller | Lista de Vehículos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container mt-4">
+    <h2>Listado de Vehículos</h2>
+
+    <div class="mb-3 d-flex gap-2">
+        <a th:href="@{/vehiculo/registro}" class="btn btn-primary">
+            Registrar Vehículo
+        </a>
+        <a th:href="@{/vehiculo/habilitar}" class="btn btn-warning">
+            Habilitar Vehículo
+        </a>
+        <a th:href="@{/menuprincipal}" class="btn btn-dark">
+            Regresar
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Código</th>
+                    <th>Placa</th>
+                    <th>Modelo</th>
+                    <th>Año</th>
+                    <th>Marca</th>
+                    <th>Cliente</th>
+                    <th>Estado</th>
+                    <th>Actualizar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="veh : ${listavehiculo}">
+                    <td th:text="${veh.codigo}"></td>
+                    <td th:text="${veh.placa}"></td>
+                    <td th:text="${veh.modelo}"></td>
+                    <td th:text="${veh.anio}"></td>
+                    <td th:text="${veh.marca.nombre}"></td>
+                    <td th:text="${veh.cliente.nombre}"></td>
+                    <td th:text="${veh.estado ? 'Habilitado' : 'Deshabilitado'}"></td>
+
+                    <td>
+                        <a th:href="@{/vehiculo/actualizar/{id}(id=${veh.codigo})}"
+                           class="btn btn-success btn-sm">
+                           Actualizar
+                        </a>
+                    </td>
+
+                    <td>
+                        <a th:href="@{/vehiculo/eliminar/{id}(id=${veh.codigo})}"
+                           class="btn btn-danger btn-sm"
+                           th:if="${veh.estado}">
+                           Deshabilitar
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

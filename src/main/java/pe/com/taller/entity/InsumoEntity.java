@@ -23,29 +23,28 @@ import lombok.NoArgsConstructor;
 @Entity(name = "InsumoEntity")
 @Table(name = "insumo")
 public class InsumoEntity implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "codins")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codigo;  
-    
+    @Column(name = "codins")
+    private Long codigo;
+
     @Column(name = "nomins", length = 100, nullable = false)
     private String nombre;
-    
+
     @ManyToOne
-    @JoinColumn(name = "codmar", referencedColumnName = "codmar")
-    private MarcaEntity marca;  
+    @JoinColumn(name = "codmar", nullable = false)
+    private MarcaEntity marca;
 
     @Column(name = "cosins", precision = 10, scale = 2)
     private BigDecimal costo;
 
+    @ManyToOne
+    @JoinColumn(name = "codpro", nullable = false)
+    private ProveedorEntity proveedor;
+
     @Column(name = "estins", nullable = false)
     private boolean estado;
-
-    @ManyToOne
-    @JoinColumn(name = "codpro", referencedColumnName = "codpro")
-    private ProveedorEntity proveedor;
-    
-    
 }

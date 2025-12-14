@@ -5,55 +5,79 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Taller | Lista de Insumos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
 </head>
 
 <body>
-    <div class="container py-4">
-        <h1 class="mb-4">Listado de Insumos</h1>
+<div class="container py-4">
 
-        <div class="mb-3 d-flex gap-2">
-            <a th:href="@{/insumo/registro}" class="btn btn-primary">Registrar Insumo</a>
-            <a th:href="@{/insumo/habilitar}" class="btn btn-warning">Habilitar Insumo</a>
-            <a th:href="@{/menuprincipal}" class="btn btn-dark">Regresar</a>
-        </div>
+    <h1 class="mb-4">Listado de Insumos</h1>
 
-        <div class="table-responsive">
-            <table class="table table-striped table-hover table-bordered align-middle">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">Código</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Marca</th>
-                        <th scope="col">Costo</th>
-                        <th scope="col">Proveedor</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col" class="text-center">Actualizar</th>
-                        <th scope="col" class="text-center">Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="ins : ${listainsumo}">
-                        <th scope="row" th:text="${ins.codigo}"></th>
-                        <td th:text="${ins.nombre}"></td>
-                        <td th:text="${ins.marca.nombre}"></td>
-                        <td th:text="${ins.costo}"></td>
-                        <td th:text="${ins.proveedor.nombre}"></td>
-                        <td th:text="${ins.estado} ? 'Habilitado' : 'Deshabilitado'"></td>
-                        <td class="text-center">
-                            <a th:href="@{/insumo/actualizar/{id}(id=${ins.codigo})}" class="btn btn-success btn-sm">Actualizar</a>
-                        </td>
-                        <td class="text-center">
-                            <a th:href="@{/insumo/eliminar/{id}(id=${ins.codigo})}" class="btn btn-danger btn-sm">Eliminar</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="mb-3 d-flex gap-2">
+        <a th:href="@{/insumo/registro}" class="btn btn-primary">Registrar Insumo</a>
+        <a th:href="@{/insumo/habilitar}" class="btn btn-warning">Habilitar Insumo</a>
+        <a th:href="@{/menuprincipal}" class="btn btn-dark">Regresar</a>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    <!-- TABLA -->
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered align-middle">
+
+            <thead class="table-dark">
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Marca</th>
+                <th>Costo</th>
+                <th>Proveedor</th>
+                <th>Estado</th>
+                <th class="text-center">Actualizar</th>
+                <th class="text-center">Eliminar</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="ins : ${listainsumo}">
+                <td th:text="${ins.codigo}"></td>
+                <td th:text="${ins.nombre}"></td>
+
+                <!-- Marca -->
+                <td th:text="${ins.marca != null ? ins.marca.nombre : 'Sin marca'}"></td>
+
+                <td th:text="${ins.costo}"></td>
+
+                <!-- Proveedor -->
+                <td th:text="${ins.proveedor != null ? ins.proveedor.nombre : 'Sin proveedor'}"></td>
+
+                <td th:text="${ins.estado ? 'Habilitado' : 'Deshabilitado'}"></td>
+
+                <td class="text-center">
+                    <a th:href="@{/insumo/actualizar/{id}(id=${ins.codigo})}"
+                       class="btn btn-success btn-sm">
+                        Actualizar
+                    </a>
+                </td>
+
+                <td class="text-center">
+                    <a th:href="@{/insumo/eliminar/{id}(id=${ins.codigo})}"
+                       class="btn btn-danger btn-sm">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <!-- FIN TABLA -->
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 </body>
